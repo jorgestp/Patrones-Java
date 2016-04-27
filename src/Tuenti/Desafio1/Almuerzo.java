@@ -29,7 +29,7 @@ public class Almuerzo {
 			throw new IllegalArgumentException("Imput está vacío");
 		}
 		
-		if(pos>input.size()){
+		if(input.size()<=pos){
 			
 			return exit;
 		}
@@ -39,8 +39,10 @@ public class Almuerzo {
 			int numMesas;
 			
 			numMesas= numMesasPar(input.get(pos));
+			
+			pos=pos+1;
 		
-			exit= (List<Integer>) calculoMesas(input, pos+1);
+			exit= (List<Integer>) calculoMesas(input, pos);
 			
 			exit.add(numMesas);
 			
@@ -72,7 +74,7 @@ public class Almuerzo {
 	
 	private boolean diferencia(int comensales){
 		
-		return (((comensales)&par))==0;
+		return (((comensales)%par))==0;
 	}
 	
 	private int numMesasImpar(int comensales){
